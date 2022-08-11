@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import EmailInput from '../../ui/input/email_input';
+import MuiEmailInput from '../../ui/input/mui_input';
 import * as c from '../index';
 import { swap, updateEntity } from '../../store/index';
 import * as l from '../../core/index';
@@ -47,7 +48,7 @@ export default class EmailPane extends React.Component {
     isValid = forceInvalidVisibility && value === '' ? true : isValid;
 
     return (
-      <EmailInput
+      <MuiEmailInput
         lockId={l.id(lock)}
         value={value}
         invalidHint={invalidHint}
@@ -58,6 +59,18 @@ export default class EmailPane extends React.Component {
         disabled={l.submitting(lock)}
       />
     );
+    // return (
+    //   <EmailInput
+    //     lockId={l.id(lock)}
+    //     value={value}
+    //     invalidHint={invalidHint}
+    //     isValid={isValid}
+    //     onChange={::this.handleChange}
+    //     placeholder={placeholder}
+    //     autoComplete={allowAutocomplete}
+    //     disabled={l.submitting(lock)}
+    //   />
+    // );
   }
 }
 

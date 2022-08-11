@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import PasswordInput from '../../ui/input/password_input';
+import MuiPasswordInput from '../../ui/input/mui_password_input';
 import * as c from '../index';
 import { swap, updateEntity } from '../../store/index';
 import * as l from '../../core/index';
@@ -28,7 +29,7 @@ export default class PasswordPane extends React.Component {
       : i18n.str('blankErrorHint') || i18n.str('blankPasswordErrorHint');
     return (
       <div className={`auth0-lock-input-block auth0-lock-input-show-password${hiddenCss}`}>
-        <PasswordInput
+        <MuiPasswordInput
           value={c.getFieldValue(lock, 'password')}
           invalidHint={invalidHint}
           showPasswordStrengthMessage={!c.isFieldValid(lock, 'password')}
@@ -41,6 +42,19 @@ export default class PasswordPane extends React.Component {
           showPassword={c.getFieldValue(lock, 'showPassword', false)}
           lock={lock}
         />
+        {/* <PasswordInput
+          value={c.getFieldValue(lock, 'password')}
+          invalidHint={invalidHint}
+          showPasswordStrengthMessage={!c.isFieldValid(lock, 'password')}
+          isValid={!c.isFieldVisiblyInvalid(lock, 'password')}
+          onChange={this.handleChange}
+          placeholder={placeholder}
+          strengthMessages={strengthMessages}
+          disabled={l.submitting(lock)}
+          policy={policy}
+          showPassword={c.getFieldValue(lock, 'showPassword', false)}
+          lock={lock}
+        /> */}
         {l.ui.allowShowPassword(lock) && (
           <div className="auth0-lock-show-password">
             <input type="checkbox" id="slideOne" onChange={this.handleShowPasswordChange} />

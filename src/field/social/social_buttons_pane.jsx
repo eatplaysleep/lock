@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
 import AuthButton from '../../ui/button/auth_button';
+import MuiAuthButton from '../../ui/button/mui_auth_button';
 import * as l from '../../core/index';
 import { logIn } from '../../quick-auth/actions';
 import { displayName, socialConnections, authButtonsTheme } from '../../connection/social/index';
@@ -35,7 +36,7 @@ export default class SocialButtonsPane extends React.Component {
       const icon = buttonTheme && buttonTheme.get('icon');
 
       return (
-        <AuthButton
+        <MuiAuthButton
           key={x.get('name')}
           label={labelFn(
             signUp ? 'signUpWithLabel' : 'loginWithLabel',
@@ -48,6 +49,20 @@ export default class SocialButtonsPane extends React.Component {
           icon={icon}
         />
       );
+      // return (
+      //   <AuthButton
+      //     key={x.get('name')}
+      //     label={labelFn(
+      //       signUp ? 'signUpWithLabel' : 'loginWithLabel',
+      //       connectionName || displayName(x)
+      //     )}
+      //     onClick={() => this.handleSubmit(lock, x, signUp)}
+      //     strategy={x.get('strategy')}
+      //     primaryColor={primaryColor}
+      //     foregroundColor={foregroundColor}
+      //     icon={icon}
+      //   />
+      // );
     });
 
     const loading = showLoading && (
